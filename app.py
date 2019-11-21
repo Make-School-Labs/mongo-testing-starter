@@ -48,33 +48,6 @@ def show_classical_songs():
     classical_songs = []
     return render_template('songs_list.html', songs=classical_songs)
 
-@app.route('/create')
-def show_create_form():
-    """Shows a creation form to make a new song."""
-    return render_template('song_create_form.html')
-
-@app.route('/create', methods=['POST'])
-def create_new_song():
-    """Creates a new song using the POST data from the form."""
-    song_title = request.form.get('song_title')
-
-    # TODO: Replace `None` below with a call to `request.form.get` to get the
-    # right parameters
-    artist = None
-    genre = None
-
-    song = {
-        'title': song_title,
-        'artist': artist,
-        'genre': genre
-    }
-
-    # TODO: Replace `None` below with a call to `insert_one` on the songs 
-    # collection to put the new song in the database and get the result.
-    result = None
-
-    return redirect(url_for('show_song', song_id=result.inserted_id))
-
 @app.route('/song/<song_id>')
 def show_song(song_id):
     """Show a specific song."""
@@ -87,6 +60,34 @@ def show_song(song_id):
     song = None
 
     return render_template('song_detail.html', song=song)
+
+@app.route('/create')
+def show_create_form():
+    """Shows a creation form to make a new song."""
+    return render_template('song_create_form.html')
+
+@app.route('/create', methods=['POST'])
+def create_new_song():
+    """Creates a new song using the POST data from the form."""
+    song_title = request.form.get('title')
+
+    # TODO: Replace `None` below with a call to `request.form.get` to get the
+    # right parameters
+    artist = None
+    genre = None
+
+    # Create a new song object using the POST data
+    song = {
+        'title': song_title,
+        'artist': artist,
+        'genre': genre
+    }
+
+    # TODO: Replace `None` below with a call to `insert_one` on the songs 
+    # collection to put the new song in the database and get the result.
+    result = None
+
+    return redirect(url_for('show_song', song_id=result.inserted_id))
 
 @app.route('/delete/<song_id>', methods=['POST'])
 def delete_song(song_id):

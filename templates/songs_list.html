@@ -4,6 +4,6 @@
 
 <ul>
     {% for song in songs %}
-    <li>{{ song }}</li>
+    <li><a href="/song/{{ song._id }}">{{ song.title }}</a></li>
     {% endfor %}
 </ul>

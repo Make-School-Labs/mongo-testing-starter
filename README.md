@@ -17,3 +17,9 @@ Then, you can run your application with:
 ```bash
 $ flask run
 ```
+
+Run the tests with:
+
+```bash
+$ python3 tests.py
+```

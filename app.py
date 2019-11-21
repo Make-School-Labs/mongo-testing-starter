@@ -97,3 +97,6 @@ def delete_song(song_id):
     result = None
 
     return redirect(url_for('show_all_songs'))
+
+if __name__ == '__main__':
+    app.run(debug=True)

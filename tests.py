@@ -2,6 +2,19 @@ from app import app
 from unittest import TestCase, main
 from unittest.mock import patch
 
+################################################################################
+# SETUP:
+# 1. Make sure you have MongoDB and PyMongo installed
+# 2. In the project's folder, run the tests with `python3 tests.py`
+#
+# CHALLENGES:
+# 1. Modify the 'test_show_classical_songs' test to load the classical songs.
+# 2. Modify the 'test_show_song' test to load the song details page for a specific
+#    song.
+# 3. Modify the 'test_delete_song' test to make a POST request for a specific
+#    song, then check if it would have been deleted.
+################################################################################
+
 class AppTests(TestCase): 
     """Run tests on the Songs App."""
     def setUp(self):
@@ -33,8 +46,7 @@ class AppTests(TestCase):
     @patch('pymongo.collection.Collection.find')
     def test_show_classical_songs(self, mock_find):
         """Test the Classical Songs page."""
-        # TODO: Set up some fake data that includes 1 classical and 1 
-        # non-classical song.
+        # TODO: Set up some fake data that includes at least 1 classical song.
 
         # TODO: Set the mock's return value to be the fake data.
 
@@ -42,9 +54,7 @@ class AppTests(TestCase):
 
         # TODO: Check that the status code is 200.
 
-        # TODO: Check that the classical song appears in the page content, and
-        # that the non-classical song does NOT appear in the page content.
-        # HINT: Use `self.assertNotIn` instead of `self.assertIn`.
+        # TODO: Check that the classical song appears in the page content.
         pass
 
     @patch('pymongo.collection.Collection.find_one')
